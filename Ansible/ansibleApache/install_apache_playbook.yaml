@@ -1,0 +1,41 @@
+---
+- name: INSTALL WEBSERVER ON LINUX SYSTEM
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: INSTALL APACHE2
+      apt:
+        name: apache2
+        update_cache: yes
+        state: latest
+
+    - name: ENABLE MOD_REWRITE
+      apache2_module:
+        name: rewrite
+        state: present
+      notify: RESTART APACHE2
+
+    - name: index homepage
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      notify: RESTART APACHE2
+
+    - name: streetview image
+      copy:
+        src: images/streetview.png
+        dest: /var/www/html/streetview.png
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+  handlers:
+    - name: RESTART APACHE2
+      service:
+        name: apache2
+        state: restarted
+        enabled: yes
