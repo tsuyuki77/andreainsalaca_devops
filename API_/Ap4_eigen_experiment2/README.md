@@ -1,13 +1,13 @@
-# Ap4 – Eigen API-experiment 2 (Python) – DummyJSON (Webforms)
+# Ap4 – Eigen API-experiment 2 (Python) – Postman Echo (Webforms)
 
 ## Beschrijving
 In dit experiment heb ik een tweede eigen API-experiment uitgevoerd met Python.
-Ik gebruik een andere online REST API dan bij Ap3, namelijk de DummyJSON API.
+Ik gebruik een andere online REST API dan bij Ap3, namelijk de Postman Echo API.
 
 Ik toon ook het verschil tussen JSON en webforms.
 In dit experiment verstuur ik de data als webforms met `data=` in Python requests.
 
-Met deze API beheer ik posts via verschillende HTTP-methodes (CRUD).
+Met deze API test ik verschillende HTTP-methodes (GET, POST, PUT, DELETE).
 
 ---
 
