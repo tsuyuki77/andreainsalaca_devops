@@ -36,7 +36,8 @@ ansible-playbook install_nginx_website.yaml
 
 ---
 
-## Controle (bewijs)
+## Controle
+
 1. Controleer de status van Nginx:
 ```bash
 sudo systemctl status nginx
@@ -44,16 +45,34 @@ sudo systemctl status nginx
 
 2. Controleer of de bestanden aanwezig zijn:
 ```bash
-ls -l /var/www/html
+ls -l /var/www/a3
+ls -l /var/www/a3/images
 ```
 
 3. Test in de browser of met curl:
 ```bash
-curl http://192.0.2.4
+curl http://192.0.2.4:8081
 ```
+
 of in de browser:
 ```
-http://192.0.2.4
+http://192.0.2.4:8081
 ```
 
 De webpagina en afbeelding moeten zichtbaar zijn.
+
+## Extra: Apache en Nginx tegelijk gebruiken
+In mijn VM draaide Apache al op poort 80 (A2).  
+Daarom kon Nginx niet starten op dezelfde poort.
+
+Om Apache en Nginx tegelijk te kunnen gebruiken heb ik de Nginx configuratie aangepast naar poort `8081` met `nano`:
+
+```bash
+sudo nano /etc/nginx/sites-available/default
+```
+
+Daarna heb ik Nginx herstart:
+
+```bash
+sudo systemctl restart nginx
+```
