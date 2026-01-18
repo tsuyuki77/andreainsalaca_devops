@@ -1,4 +1,4 @@
-# Di2 – Eigen image-experiment 2
+# Di3 – Eigen image-experiment 2
 
 ## Beschrijving
 In dit experiment heb ik een tweede eigen Docker image gemaakt.

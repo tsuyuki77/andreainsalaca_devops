@@ -1,18 +1,18 @@
 import requests
 
-post_id = input("Geef het post ID dat je wil aanpassen: ")
+url = "https://postman-echo.com/put"
 
-url = "https://dummyjson.com/posts/" + post_id
-
+post_id = input("Geef een post ID: ")
 title = input("Nieuwe titel: ")
-body = input("Nieuwe inhoud (body): ")
+body = input("Nieuwe inhoud: ")
 
 data = {
+    "postId": post_id,
     "title": title,
     "body": body
 }
 
-response = requests.put(url, json=data)
+response = requests.put(url, data=data)
 
 print("\nStatus code:")
 print(response.status_code)

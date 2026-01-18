@@ -8,4 +8,4 @@ Ik gebruik hetzelfde principe als in de theorie: register en debug
 Ik ga naar de map van dit experiment en run:
 
 ```bash
-ansible-playbook check_connectie.yml
+ansible-playbook check_connectie.yaml

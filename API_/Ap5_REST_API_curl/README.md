@@ -1,4 +1,4 @@
-# Ap6 – Eigen REST-API experiment met curl 2 (gebaseerd op Ap3)
+# Ap5 – Eigen REST-API experiment met curl 2 (gebaseerd op Ap3)
 
 ## Beschrijving
 In dit experiment heb ik een REST-API experiment uitgevoerd met `curl`.

@@ -1,11 +1,17 @@
 import requests
 
-url = "https://dummyjson.com/posts"
+url = "https://postman-echo.com/get"
 
-response = requests.get(url)
+post_id = input("Geef een post ID: ")
+
+params = {
+    "postId": post_id
+}
+
+response = requests.get(url, params=params)
 
 print("Status code:")
 print(response.status_code)
 
-print("\nPosts:")
+print("\nResponse:")
 print(response.json())

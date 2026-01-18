@@ -1,17 +1,21 @@
-# Ap4 – Eigen API-experiment 2 (Python) – DummyJSON
+# Ap4 – Eigen API-experiment 2 (Python) – DummyJSON (Webforms)
 
 ## Beschrijving
 In dit experiment heb ik een tweede eigen API-experiment uitgevoerd met Python.
 Ik gebruik een andere online REST API dan bij Ap3, namelijk de DummyJSON API.
-Met deze API heb ik posts beheerd via verschillende HTTP-methodes (CRUD).
+
+Ik toon ook het verschil tussen JSON en webforms.
+In dit experiment verstuur ik de data als webforms met `data=` in Python requests.
+
+Met deze API beheer ik posts via verschillende HTTP-methodes (CRUD).
 
 ---
 
 ## Gebruikte API
-Naam: DummyJSON test API  
+Naam: POSTMAN echo API  
 URL:
 ```
-https://dummyjson.com/posts
+https://postman-echo.com/
 ```
 
 Deze API is publiek en vereist geen API-key.
@@ -25,12 +29,12 @@ Deze API is publiek en vereist geen API-key.
 ---
 
 ## Stap 1: READ – Posts opvragen
-Bestand: `get_posts.py`
+Bestand: `get_post.py`
 
-Dit script haalt alle posts op via een GET-request.
+Dit script doet een GET request naar `/get` met parameters.
 
 ```bash
-python3 get_posts.py
+python3 get_post.py
 ```
 
 ---

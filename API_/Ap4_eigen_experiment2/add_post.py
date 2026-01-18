@@ -1,17 +1,17 @@
 import requests
 
-url = "https://dummyjson.com/posts/add"
+url = "https://postman-echo.com/post"
 
 title = input("Geef een titel: ")
-body = input("Geef de inhoud (body): ")
+body = input("Geef de inhoud: ")
 
 data = {
     "title": title,
     "body": body,
-    "userId": 1
+    "userId": "1"
 }
 
-response = requests.post(url, json=data)
+response = requests.post(url, data=data)
 
 print("\nStatus code:")
 print(response.status_code)
