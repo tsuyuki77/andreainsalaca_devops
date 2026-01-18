@@ -1,0 +1,94 @@
+---
+  - name: A3 - Eigen Ansible playbook-experiment 2 (Nginx)
+    hosts: otherservers
+    become: yes
+    gather_facts: no
+  
+    tasks:
+      - name: Update apt cache
+        apt:
+          update_cache: yes
+  
+      - name: Install Nginx
+        apt:
+          name: nginx
+          state: present
+  
+      - name: Start Nginx
+        service:
+          name: nginx
+          state: started
+          enabled: yes
+  
+      - name: Maak A3 webroot folder
+        file:
+          path: "/var/www/a3"
+          state: directory
+          owner: www-data
+          group: www-data
+          mode: "0755"
+  
+      - name: Maak A3 images folder
+        file:
+          path: "/var/www/a3/images"
+          state: directory
+          owner: www-data
+          group: www-data
+          mode: "0755"
+  
+      - name: A3 index.html plaatsen
+        copy:
+          src: files/index.html
+          dest: "/var/www/a3/index.html"
+          owner: www-data
+          group: www-data
+          mode: "0644"
+        notify: RESTART NGINX
+  
+      - name: A3 afbeelding plaatsen
+        copy:
+          src: files/images/streetview.png
+          dest: "/var/www/a3/images/streetview.png"
+          owner: www-data
+          group: www-data
+          mode: "0644"
+        notify: RESTART NGINX
+  
+      - name: Nginx site config voor A3 plaatsen (poort 8081)
+        copy:
+          dest: /etc/nginx/sites-available/a3
+          mode: "0644"
+          content: |
+            server {
+                listen 8081 default_server;
+                listen [::]:8081 default_server;
+  
+                root /var/www/a3;
+                index index.html;
+  
+                location / {
+                    try_files $uri $uri/ =404;
+                }
+            }
+        notify: RESTART NGINX
+  
+      - name: Enable A3 site
+        file:
+          src: /etc/nginx/sites-available/a3
+          dest: /etc/nginx/sites-enabled/a3
+          state: link
+        notify: RESTART NGINX
+  
+      - name: Disable default site
+        file:
+          path: /etc/nginx/sites-enabled/default
+          state: absent
+        notify: RESTART NGINX
+  
+    handlers:
+      - name: RESTART NGINX
+        service:
+          name: nginx
+          state: restarted
+          enabled: yes
+  
