@@ -2,8 +2,8 @@ FROM python:latest
 
 RUN pip install flask
 
-COPY ./flask_app.py /home/imageweb2_app/
+COPY ./flask_app.py /home/di3_app/
 
 EXPOSE 5555
 
-CMD python /home/imageweb2_app/flask_app.py
+CMD python /home/di3_app/flask_app.py

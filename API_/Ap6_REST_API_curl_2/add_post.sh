@@ -1,10 +1,11 @@
 #!/bin/bash
 
-echo "===== POST: Nieuwe post toevoegen ====="
-curl -X POST https://dummyjson.com/posts/add \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "DevOps curl test",
-    "body": "Dit is een REST API test met curl",
-    "userId": 1
-  }'
+echo "===== POST: forms (x-www-form-urlencoded) ====="
+read -p "Geef een titel: " title
+read -p "Geef de inhoud: " body
+
+curl -X POST "https://postman-echo.com/post" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "title=$title" \
+  -d "body=$body" \
+  -d "userId=1"

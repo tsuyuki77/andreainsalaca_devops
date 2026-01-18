@@ -1,4 +1,6 @@
 #!/bin/bash
 
-echo "===== GET: Alle posts ophalen ====="
-curl https://dummyjson.com/posts
+echo "===== GET: request met parameters ====="
+read -p "Geef post ID: " post_id
+
+curl "https://postman-echo.com/get?postId=$post_id"

@@ -1,4 +1,8 @@
 #!/bin/bash
 
-echo "===== DELETE: Post verwijderen (id 1) ====="
-curl -X DELETE https://dummyjson.com/posts/1
+echo "===== DELETE: forms (x-www-form-urlencoded) ====="
+read -p "Geef post ID: " post_id
+
+curl -X DELETE "https://postman-echo.com/delete" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "id=$post_id"

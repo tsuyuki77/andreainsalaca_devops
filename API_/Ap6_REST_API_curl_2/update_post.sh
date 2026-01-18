@@ -1,9 +1,13 @@
 #!/bin/bash
 
-echo "===== PUT: Post aanpassen (id 1) ====="
-curl -X PUT https://dummyjson.com/posts/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "Aangepaste titel",
-    "body": "Post aangepast met curl"
-  }'
+echo "===== PUT: forms (x-www-form-urlencoded) ====="
+read -p "Geef post ID: " post_id
+read -p "Nieuwe titel: " title
+read -p "Nieuwe inhoud: " body
+
+curl -X PUT "https://postman-echo.com/put" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "id=$post_id" \
+  -d "title=$title" \
+  -d "body=$body" \
+  -d "userId=1"
